@@ -23,25 +23,22 @@ namespace HackAUBG6.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly IUserStore<IdentityUser> _userStore;
-        private readonly IUserEmailStore<IdentityUser> _emailStore;
-        private readonly ILogger<RegisterModel> _logger;
+        private readonly SignInManager<HackAUBG6.Infrastructure.Data.Models.ApplicationUser> _signInManager;
+        private readonly UserManager<HackAUBG6.Infrastructure.Data.Models.ApplicationUser> _userManager;
+        private readonly IUserStore<HackAUBG6.Infrastructure.Data.Models.ApplicationUser> _userStore;
+        private readonly IUserEmailStore<HackAUBG6.Infrastructure.Data.Models.ApplicationUser> _emailStore;
+        private readonly ILogger<HackAUBG6.Infrastructure.Data.Models.ApplicationUser> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
-            UserManager<IdentityUser> userManager,
-            IUserStore<IdentityUser> userStore,
-            SignInManager<IdentityUser> signInManager,
-            ILogger<RegisterModel> logger,
+            UserManager<HackAUBG6.Infrastructure.Data.Models.ApplicationUser> userManager,
+            IUserStore<HackAUBG6.Infrastructure.Data.Models.ApplicationUser> userStore,
+            SignInManager<HackAUBG6.Infrastructure.Data.Models.ApplicationUser> signInManager,
             IEmailSender emailSender)
         {
             _userManager = userManager;
             _userStore = userStore;
-            _emailStore = GetEmailStore();
             _signInManager = signInManager;
-            _logger = logger;
             _emailSender = emailSender;
         }
 
@@ -154,27 +151,27 @@ namespace HackAUBG6.Areas.Identity.Pages.Account
             return Page();
         }
 
-        private IdentityUser CreateUser()
+        private HackAUBG6.Infrastructure.Data.Models.ApplicationUser CreateUser()
         {
             try
             {
-                return Activator.CreateInstance<IdentityUser>();
+                return Activator.CreateInstance<HackAUBG6.Infrastructure.Data.Models.ApplicationUser>();
             }
             catch
             {
-                throw new InvalidOperationException($"Can't create an instance of '{nameof(IdentityUser)}'. " +
-                    $"Ensure that '{nameof(IdentityUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
+                throw new InvalidOperationException($"Can't create an instance of '{nameof(HackAUBG6.Infrastructure.Data.Models.ApplicationUser)}'. " +
+                    $"Ensure that '{nameof(HackAUBG6.Infrastructure.Data.Models.ApplicationUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
                     $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
             }
         }
 
-        private IUserEmailStore<IdentityUser> GetEmailStore()
+        private IUserEmailStore<HackAUBG6.Infrastructure.Data.Models.ApplicationUser> GetEmailStore()
         {
             if (!_userManager.SupportsUserEmail)
             {
                 throw new NotSupportedException("The default UI requires a user store with email support.");
             }
-            return (IUserEmailStore<IdentityUser>)_userStore;
+            return (IUserEmailStore<HackAUBG6.Infrastructure.Data.Models.ApplicationUser>)_userStore;
         }
     }
 }
