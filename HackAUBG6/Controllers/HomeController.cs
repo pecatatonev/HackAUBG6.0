@@ -30,7 +30,9 @@ namespace HackAUBG6.Controllers
                 {
                     string jsonData = await reader.ReadToEndAsync();
 
-                    await service.AllBillAsync(jsonData);
+                    var items = await service.AllBillAsync(jsonData);
+
+                    
                 }
                 return Ok("Data received successfully.");
             }

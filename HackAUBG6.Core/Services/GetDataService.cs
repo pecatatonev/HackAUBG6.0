@@ -13,9 +13,9 @@ namespace HackAUBG6.Core.Services
             context= _context;
         }
 
-        public async Task<IEnumerable<GetDataBillDTO>> AllBillAsync(string data)
+        public async Task<GetDataBillDTO> AllBillAsync(string data)
         {
-            List<GetDataBillDTO> getDataBillDTOs = data.DeserializeFromJson<List<GetDataBillDTO>>();
+            GetDataBillDTO getDataBillDTOs = data.DeserializeFromJson<GetDataBillDTO>();
 
             return getDataBillDTOs;
         }
