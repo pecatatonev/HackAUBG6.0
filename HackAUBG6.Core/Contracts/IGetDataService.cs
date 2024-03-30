@@ -4,6 +4,6 @@ namespace HackAUBG6.Core.Contracts
 {
     public interface IGetDataService
     {
-        Task<GetDataBillDTO> AllBillAsync(string data);
+        GetDataBillDTO AllBill(string data);
     }
 } 

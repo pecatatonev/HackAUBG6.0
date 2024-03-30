@@ -1,4 +1,7 @@
 ﻿using HackAUBG6.Core.Contracts;
+using HackAUBG6.Core.DTOs;
+using HackAUBG6.Infrastructure;
+using HackAUBG6.Infrastructure.Data.Models;
 using HackAUBG6.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -20,28 +23,6 @@ namespace HackAUBG6.Controllers
         public IActionResult Index()
         {
             return View();
-        }
-
-        public async Task<IActionResult> Privacy()
-        {
-            try
-            {
-                using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
-                {
-                    string jsonData = await reader.ReadToEndAsync();
-
-                    var items = await service.AllBillAsync(jsonData);
-
-                    
-                }
-                return Ok("Data received successfully.");
-            }
-            catch (Exception ex)
-            {
-                // Handle any exceptions
-                return BadRequest("Error processing data: " + ex.Message);
-            }
-            
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

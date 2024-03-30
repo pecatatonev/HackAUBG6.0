@@ -1,6 +1,9 @@
 ﻿using HackAUBG6.Core.Contracts;
 using HackAUBG6.Core.DTOs;
 using HackAUBG6.Infrastructure.Data;
+using HackAUBG6.Infrastructure.Data.Models;
+using System.Diagnostics.Contracts;
+using System.Globalization;
 using System.Net;
 
 namespace HackAUBG6.Core.Services
@@ -13,11 +16,30 @@ namespace HackAUBG6.Core.Services
             context= _context;
         }
 
-        public async Task<GetDataBillDTO> AllBillAsync(string data)
+        public GetDataBillDTO AllBill(string data)
         {
             GetDataBillDTO getDataBillDTOs = data.DeserializeFromJson<GetDataBillDTO>();
 
             return getDataBillDTOs;
+        }
+
+        public void SaveBill(GetDataBillDTO dataDTO)
+        {
+            DateTime start = DateTime.Now;
+
+            if (!DateTime.TryParseExact(dataDTO.DateTime,
+            "dd/MM/yyyy",
+            CultureInfo.InvariantCulture,
+            DateTimeStyles.None,
+            out start))
+            {
+                return -1;
+            }
+
+            Bill billToAdd = new Bill()
+            {
+            DateOfBill = dataDTO.DateTime.,
+            };
         }
     }
 }
