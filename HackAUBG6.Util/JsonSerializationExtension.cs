@@ -1,12 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using System.Xml;
 using JsonConverter = Newtonsoft.Json.JsonConverter;
 
 namespace HackAUBG6.Util
@@ -18,7 +11,7 @@ namespace HackAUBG6.Util
             var jsonSerializer = new JsonSerializerSettings()
             {
                 NullValueHandling = NullValueHandling.Ignore,
-                Formatting = Newtonsoft.Json.Formatting.Indented,
+                Formatting = Formatting.Indented,
                 Converters = new List<JsonConverter>()
                 {
                     new StringEnumConverter()
@@ -35,7 +28,7 @@ namespace HackAUBG6.Util
             var jsonSerializer = new JsonSerializerSettings()
             {
                 NullValueHandling = NullValueHandling.Ignore,
-                Formatting = Newtonsoft.Json.Formatting.Indented
+                Formatting = Formatting.Indented
             };
 
             T result = JsonConvert.DeserializeObject<T>(jsonString, jsonSerializer);
