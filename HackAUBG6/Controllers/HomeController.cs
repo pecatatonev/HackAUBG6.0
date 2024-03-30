@@ -22,7 +22,7 @@ namespace HackAUBG6.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Privacy()
+        public async Task<IActionResult> Data()
         {
             try
             {
