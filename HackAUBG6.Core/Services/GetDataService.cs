@@ -1,6 +1,7 @@
 ﻿using HackAUBG6.Core.Contracts;
 using HackAUBG6.Core.DTOs;
 using HackAUBG6.Infrastructure.Data;
+using System.Net;
 
 namespace HackAUBG6.Core.Services
 {
@@ -12,9 +13,11 @@ namespace HackAUBG6.Core.Services
             context= _context;
         }
 
-        public async Task<IEnumerable<GetDataBill>> AllBillAsync()
+        public async Task<IEnumerable<GetDataBillDTO>> AllBillAsync(string data)
         {
-            throw new NotImplementedException();
+            List<GetDataBillDTO> getDataBillDTOs = data.DeserializeFromJson<List<GetDataBillDTO>>();
+
+            return getDataBillDTOs;
         }
     }
 }

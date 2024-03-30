@@ -1,16 +1,20 @@
-﻿using HackAUBG6.Models;
+﻿using HackAUBG6.Core.Contracts;
+using HackAUBG6.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Text;
 
 namespace HackAUBG6.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<HomeController> logger;
+        private readonly IGetDataService service;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> _logger, IGetDataService _service)
         {
-            _logger = logger;
+            logger = _logger;
+            service = _service;
         }
 
         public IActionResult Index()
@@ -18,9 +22,24 @@ namespace HackAUBG6.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Privacy()
         {
-            return View();
+            try
+            {
+                using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
+                {
+                    string jsonData = await reader.ReadToEndAsync();
+
+                    await service.AllBillAsync(jsonData);
+                }
+                return Ok("Data received successfully.");
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions
+                return BadRequest("Error processing data: " + ex.Message);
+            }
+            
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

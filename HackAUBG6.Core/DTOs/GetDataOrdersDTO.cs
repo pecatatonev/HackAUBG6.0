@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HackAUBG6.Core.DTOs
 {
-    public class GetDataBill
+    public class GetDataOrdersDTO
     {
     }
 }

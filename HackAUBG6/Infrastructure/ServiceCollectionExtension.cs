@@ -1,4 +1,6 @@
-﻿using HackAUBG6.Infrastructure.Data;
+﻿using HackAUBG6.Core.Contracts;
+using HackAUBG6.Core.Services;
+using HackAUBG6.Infrastructure.Data;
 using HackAUBG6.Infrastructure.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +14,7 @@ namespace HackAUBG6.Infrastructure
         {
             service.AddLogging();
 
-
+            service.AddScoped<IGetDataService, GetDataService>();
             return service;
         }
 
