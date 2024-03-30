@@ -1,11 +1,6 @@
 ﻿using HackAUBG6.Core.Contracts;
 using HackAUBG6.Core.DTOs;
 using HackAUBG6.Infrastructure.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HackAUBG6.Core.Services
 {
@@ -16,7 +11,8 @@ namespace HackAUBG6.Core.Services
         {
             context= _context;
         }
-        public Task<IEnumerable<GetDataOrders>> AllEventsAsync()
+
+        public async Task<IEnumerable<GetDataBill>> AllBillAsync()
         {
             throw new NotImplementedException();
         }
