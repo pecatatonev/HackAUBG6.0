@@ -12,8 +12,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HackAUBG6.Core", "HackAUBG6
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HackAUBG6.Infrastructure", "HackAUBG6.Infrastructure\HackAUBG6.Infrastructure.csproj", "{13FA76F7-67B3-456C-856D-7182F2ACF014}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackAUBG6.Util", "HackAUBG6.Util\HackAUBG6.Util.csproj", "{55DCC2A2-6462-443B-A004-F67510D70FA9}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,10 +30,6 @@ Global
 		{13FA76F7-67B3-456C-856D-7182F2ACF014}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13FA76F7-67B3-456C-856D-7182F2ACF014}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13FA76F7-67B3-456C-856D-7182F2ACF014}.Release|Any CPU.Build.0 = Release|Any CPU
-		{55DCC2A2-6462-443B-A004-F67510D70FA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{55DCC2A2-6462-443B-A004-F67510D70FA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{55DCC2A2-6462-443B-A004-F67510D70FA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{55DCC2A2-6462-443B-A004-F67510D70FA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

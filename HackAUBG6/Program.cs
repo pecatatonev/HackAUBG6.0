@@ -1,4 +1,5 @@
 using HackAUBG6.Data;
+using HackAUBG6.Infrastructure;
 using HackAUBG6.Infrastructure.Data;
 using HackAUBG6.Infrastructure.Data.Models;
 using Microsoft.AspNetCore.Identity;
@@ -7,14 +8,12 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddApplicationDbContext(builder.Configuration);
+builder.Services.AddApplicationIdentity(builder.Configuration);
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddApplicationServices();
 
 var app = builder.Build();
 
