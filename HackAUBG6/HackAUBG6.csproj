@@ -25,4 +25,8 @@
     <ProjectReference Include="..\HackAUBG6.Infrastructure\HackAUBG6.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+
 </Project>

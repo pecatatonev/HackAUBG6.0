@@ -33,13 +33,9 @@ namespace HackAUBG6.Core.Services
             DateTimeStyles.None,
             out start))
             {
-                return -1;
+                //return -1;
             }
 
-            Bill billToAdd = new Bill()
-            {
-            DateOfBill = dataDTO.DateTime.,
-            };
-        }
+                    }
     }
 }
