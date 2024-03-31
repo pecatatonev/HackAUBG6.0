@@ -4,6 +4,7 @@ using HackAUBG6.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HackAUBG6.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240330231511_AddingTables")]
+    partial class AddingTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -118,9 +120,6 @@ namespace HackAUBG6.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("BillId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ProductName")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -136,8 +135,6 @@ namespace HackAUBG6.Data.Migrations
                         .HasComment("ProductQuantity");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BillId");
 
                     b.ToTable("Orders");
                 });
@@ -290,13 +287,6 @@ namespace HackAUBG6.Data.Migrations
                     b.Navigation("ApplicationUser");
                 });
 
-            modelBuilder.Entity("HackAUBG6.Infrastructure.Data.Models.Order", b =>
-                {
-                    b.HasOne("HackAUBG6.Infrastructure.Data.Models.Bill", null)
-                        .WithMany("Orders")
-                        .HasForeignKey("BillId");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -351,11 +341,6 @@ namespace HackAUBG6.Data.Migrations
             modelBuilder.Entity("HackAUBG6.Infrastructure.Data.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Bills");
-                });
-
-            modelBuilder.Entity("HackAUBG6.Infrastructure.Data.Models.Bill", b =>
-                {
-                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

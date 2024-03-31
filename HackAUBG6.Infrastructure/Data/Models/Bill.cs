@@ -14,7 +14,7 @@ namespace HackAUBG6.Infrastructure.Data.Models
         [Key]
         public int Id { get; set; }
         public DateTime DateOfBill { get; set; }
-        ICollection<Order> Orders = new List<Order>();
+        public ICollection<Order> Orders { get; set; }
         public string ApplicationUserId { get; set; } = string.Empty;
         public ApplicationUser ApplicationUser { get; set; }
     }
