@@ -27,7 +27,7 @@ namespace HackAUBG6.Areas.Identity.Pages.Account
         private readonly UserManager<HackAUBG6.Infrastructure.Data.Models.ApplicationUser> _userManager;
         private readonly IUserStore<HackAUBG6.Infrastructure.Data.Models.ApplicationUser> _userStore;
         private readonly IUserEmailStore<HackAUBG6.Infrastructure.Data.Models.ApplicationUser> _emailStore;
-        private readonly ILogger<HackAUBG6.Infrastructure.Data.Models.ApplicationUser> _logger;
+        //private readonly ILogger<HackAUBG6.Infrastructure.Data.Models.ApplicationUser> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
@@ -116,7 +116,7 @@ namespace HackAUBG6.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+                    //_logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
