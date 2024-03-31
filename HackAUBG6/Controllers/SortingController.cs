@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using System.Web.Http;
 
 namespace HackAUBG6.Controllers
 {
+    [Microsoft.AspNetCore.Authorization.Authorize]
     public class SortingController : Controller
     {
         private readonly ILogger<HomeController> logger;
