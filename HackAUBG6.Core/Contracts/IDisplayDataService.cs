@@ -9,6 +9,6 @@ namespace HackAUBG6.Core.Contracts
 {
     public interface IDisplayDataService
     {
-        Task<ICollection<BillIdViewModel>> GetAllOrdersByBillId(string id);
+        Task<ICollection<BillIdViewModel>> GetAllBillsAndOrdersByUserId(string id);
     }
 }

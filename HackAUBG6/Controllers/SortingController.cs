@@ -26,7 +26,7 @@ namespace HackAUBG6.Controllers
 
         public async Task<IActionResult> Sorting()
         {
-           var models = await serviceDisplay.GetAllOrdersByBillId(User.Id());
+           var models = await serviceDisplay.GetAllBillsAndOrdersByUserId(User.Id());
 
             return View(models);
         }

@@ -19,7 +19,7 @@ namespace HackAUBG6.Core.Services
         {
             context = _context;
         }
-        public async Task<ICollection<BillIdViewModel>> GetAllOrdersByBillId(string id)
+        public async Task<ICollection<BillIdViewModel>> GetAllBillsAndOrdersByUserId(string id)
         {
             var listOfBills =  await context.Bills
             .Where(b => b.ApplicationUserId == id)
