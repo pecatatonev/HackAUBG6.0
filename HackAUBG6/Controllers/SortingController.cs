@@ -10,7 +10,7 @@ using System.Text;
 
 namespace HackAUBG6.Controllers
 {
-    [Microsoft.AspNetCore.Authorization.Authorize]
+    [Authorize]
     public class SortingController : Controller
     {
         private readonly ILogger<HomeController> logger;
