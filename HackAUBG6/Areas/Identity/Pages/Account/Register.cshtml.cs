@@ -19,11 +19,13 @@ namespace HackAUBG6.Areas.Identity.Pages.Account
         public RegisterModel(
             UserManager<HackAUBG6.Infrastructure.Data.Models.ApplicationUser> userManager,
             IUserStore<HackAUBG6.Infrastructure.Data.Models.ApplicationUser> userStore,
-            SignInManager<HackAUBG6.Infrastructure.Data.Models.ApplicationUser> signInManager)
+            SignInManager<HackAUBG6.Infrastructure.Data.Models.ApplicationUser> signInManager,
+            ILogger<HackAUBG6.Infrastructure.Data.Models.ApplicationUser> logger)
         {
             _userManager = userManager;
             _userStore = userStore;
             _signInManager = signInManager;
+            _logger= logger;
         }
 
         /// <summary>
