@@ -20,5 +20,9 @@ namespace HackAUBG6.Infrastructure.Data
 
             base.OnModelCreating(builder);
         }
+
+        public DbSet<Bill> Bills { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

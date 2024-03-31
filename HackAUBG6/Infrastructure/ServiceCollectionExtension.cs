@@ -15,6 +15,7 @@ namespace HackAUBG6.Infrastructure
             service.AddLogging();
 
             service.AddScoped<IGetDataService, GetDataService>();
+            service.AddScoped<IDisplayDataService, DisplayDataService>();
             return service;
         }
 
