@@ -23,23 +23,48 @@ namespace HackAUBG6.Core.Services
             return getDataBillDTOs;
         }
 
-        public void SaveBill(GetDataBillDTO dataDTO)
+        public async Task<bool> SaveBillAsync(GetDataBillDTO dataDTO)
         {
             DateTime start = DateTime.Now;
+            
 
             if (!DateTime.TryParseExact(dataDTO.DateTime,
-            "dd/MM/yyyy",
+            DataConstants.DateConstants,
             CultureInfo.InvariantCulture,
             DateTimeStyles.None,
             out start))
             {
-                return -1;
+                return false;
             }
 
             Bill billToAdd = new Bill()
             {
-            DateOfBill = dataDTO.DateTime.,
+                DateOfBill = start,
+                ApplicationUserId = dataDTO.ApplicationUserId,
+                Orders = new List<Order>()
             };
+
+            var orders = dataDTO.Orders.ToList();
+            Order OrderToAdd;
+            for (int i = 0; i < orders.Count(); i++)
+            {
+                OrderToAdd = new Order()
+                {
+                    ProductName = orders[i].ProductName,
+                    Quantity = orders[i].Quantity,
+                    ProductPrice = decimal.Parse(orders[i].ProductPrice)
+                };
+
+                billToAdd.Orders.Add(OrderToAdd);
+                context.Orders.Add(OrderToAdd);
+            }
+           
+            await context.Bills.AddAsync(billToAdd);
+
+            await context.SaveChangesAsync();
+            
+
+            return true;
         }
     }
 }

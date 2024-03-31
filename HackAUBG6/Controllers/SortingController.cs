@@ -15,14 +15,23 @@ namespace HackAUBG6.Controllers
     {
         private readonly ILogger<HomeController> logger;
         private readonly IGetDataService service;
+        private readonly IDisplayDataService serviceDisplay;
 
-        public SortingController(ILogger<HomeController> _logger, IGetDataService _service)
+        public SortingController(ILogger<HomeController> _logger, IGetDataService _service, IDisplayDataService _serviceDisplay)
         {
             logger = _logger;
             service = _service;
+            serviceDisplay = _serviceDisplay;
         }
 
-        public IActionResult Data()
+        public async Task<IActionResult> Sorting()
+        {
+           var models = await serviceDisplay.GetAllOrdersByBillId(User.Id());
+
+            return View(models);
+        }
+
+        public async Task<IActionResult> Data()
         {
             try
             {
@@ -39,6 +48,15 @@ namespace HackAUBG6.Controllers
                         return BadRequest();
                     }
 
+                    if (!await service.SaveBillAsync(dataBillDTO))
+                    {
+                        ModelState.AddModelError(dataBillDTO.DateTime, "The date wasn't in the correct format");
+                    }
+                    //Changing this later if we can
+                    if (!ModelState.IsValid)
+                    {
+                        return BadRequest();
+                    }
                 }
                 return Ok();
             }
